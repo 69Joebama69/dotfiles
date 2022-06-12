@@ -1,0 +1,22 @@
+/* BG: 21252e */
+/* FG: D8DEE9 */
+
+configuration {
+modi: "window,run,ssh,combi,drun";
+combi-modi: "window,drun";
+font: "feather 12";
+terminal: "kitty";
+
+sorting-method: "fzf";
+
+  timeout {
+      action: "kb-cancel";
+      delay:  0;
+  }
+  filebrowser {
+      directories-first: true;
+      sorting-method:    "name";
+  }
+}
+
+@theme "nord.rasi"

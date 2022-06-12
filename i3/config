@@ -1,0 +1,189 @@
+set $mod Mod4
+font pango:DejaVu Sans Mono 10
+floating_modifier $mod
+
+# start a terminal LIBGL_ALWAYS_SOFTWARE=1 
+bindsym $mod+Return exec kitty
+
+# kill focused window
+bindsym $mod+Shift+q kill
+
+# rofi
+# bindsym $mod+d exec --no-startup-id /home/hannes/.config/rofi/bin/launcher_colorful
+# bindsym $mod+m exec --no-startup-id /home/hannes/.config/rofi/bin/menu_mpd
+# bindsym $mod+n exec --no-startup-id /home/hannes/.config/rofi/bin/menu_network
+# bindsym $mod+p exec --no-startup-id /home/hannes/.config/rofi/bin/menu_powermenu
+bindsym $mod+d exec --no-startup-id rofi -show combi
+bindsym $mod+s exec $HOME/.config/i3/rofi-screenshot.sh
+bindsym $mod+Shift+s exec --no-startup-id rofi-screenshot
+bindsym $mod+Shift+Ctrl+s exec --no-startup-id rofi-screenshot -s
+
+bindsym $mod+b exec firefox 
+bindsym $mod+Shift+v exec code
+bindsym $mod+Shift+a exec $HOME/.config/i3/float.sh &
+
+# change focus
+bindsym $mod+h focus left
+bindsym $mod+j focus down
+bindsym $mod+k focus up
+bindsym $mod+l focus right
+
+# move focused window
+bindsym $mod+Shift+h move left
+bindsym $mod+Shift+j move down
+bindsym $mod+Shift+k move up
+bindsym $mod+Shift+l move right
+
+# split in horizontal orientation
+bindsym $mod+w split h
+
+# split in vertical orientation
+bindsym $mod+v split v
+
+# enter fullscreen mode for the focused container
+bindsym $mod+f fullscreen
+
+# toggle tiling / floating
+bindsym $mod+Shift+space floating toggle
+
+# change focus between tiling / floating windows
+bindsym $mod+space focus mode_toggle
+
+# focus the parent container
+bindsym $mod+a focus parent
+
+# focus the child container
+#bindsym $mod+d focus child
+
+# switch to workspace
+bindsym $mod+1 workspace 1
+bindsym $mod+2 workspace 2
+bindsym $mod+3 workspace 3
+bindsym $mod+4 workspace 4
+bindsym $mod+5 workspace 5
+bindsym $mod+6 workspace 6
+bindsym $mod+7 workspace 7
+bindsym $mod+8 workspace 8
+bindsym $mod+9 workspace 9
+bindsym $mod+0 workspace 10
+
+# move focused container to workspace
+bindsym $mod+Shift+1 move container to workspace 1
+bindsym $mod+Shift+2 move container to workspace 2
+bindsym $mod+Shift+3 move container to workspace 3
+bindsym $mod+Shift+4 move container to workspace 4
+bindsym $mod+Shift+5 move container to workspace 5
+bindsym $mod+Shift+6 move container to workspace 6
+bindsym $mod+Shift+7 move container to workspace 7
+bindsym $mod+Shift+8 move container to workspace 8
+bindsym $mod+Shift+9 move container to workspace 9
+bindsym $mod+Shift+0 move container to workspace 10
+
+# reload the configuration file
+bindsym $mod+Shift+c reload
+# restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
+bindsym $mod+Shift+r restart
+# exit i3 (logs you out of your X session)
+bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
+
+# lock
+bindsym $mod+Shift+p exec /home/hannes/.config/i3/lock.sh
+
+# resize window (you can also use the mouse for that)
+mode "resize" {
+    # These bindings trigger as soon as you enter the resize mode
+
+    # Pressing left will shrink the window’s width.
+    # Pressing right will grow the window’s width.
+    # Pressing up will shrink the window’s height.
+    # Pressing down will grow the window’s height.
+    bindsym j resize shrink width 5 px or 5 ppt
+    bindsym k resize shrink height 5 px or 5 ppt
+    bindsym i resize grow height 5 px or 5 ppt
+    bindsym l resize grow width 5 px or 5 ppt
+
+    # same bindings, but for the arrow keys
+    bindsym Left resize shrink width 10 px or 10 ppt
+    bindsym Down resize grow height 10 px or 10 ppt
+    bindsym Up resize shrink height 10 px or 10 ppt
+    bindsym Right resize grow width 10 px or 10 ppt
+
+    # back to normal: Enter or Escape
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+}
+
+bindsym $mod+r mode "resize"
+
+# Screen Brightness
+#bindsym XF86MonBrightnessUp exec light -A 5 # increase screen brightness
+#bindsym XF86MonBrightnessDown exec light -U 5 # decrease screen brightness
+
+# Pulse Audio controls
+#bindsym XF86AudioRaiseVolume exec pulseaudio-control --volume-max 130 up #increase sound volume
+#bindsym XF86AudioLowerVolume exec pulseaudio-control --volume-max 130 down #decrease sound volume
+#bindsym XF86AudioMute exec pulseaudio-control togmute # mute sound
+
+bindsym XF86AudioRaiseVolume exec /home/hannes/.config/i3/volumeControl.sh up
+bindsym XF86AudioLowerVolume exec /home/hannes/.config/i3/volumeControl.sh down
+bindsym XF86AudioMute exec /home/hannes/.config/i3/volumeControl.sh mute
+
+
+# bluetooth
+bindsym $mod+Shift+b exec blueman-manager
+
+#network manager dmenu
+bindsym $mod+Shift+n exec networkmanager_dmenu 
+
+# colour of border, background, text, indicator, and child_border
+client.focused              #3B4252 #2f343f #d8dee8 #3B4252 #424a59 
+client.focused_inactive     #2E3440 #2f343f #d8dee8 #2E3440 #2f343f
+client.unfocused            #2E3440 #2f343f #d8dee8 #2f343f #2f343f
+client.urgent               #3B4252 #2f343f #d8dee8 #3B4252 #2f343f
+client.placeholder          #3B4252 #2f343f #d8dee8 #3B4252 #2f343f
+client.background           #2f343f
+
+for_window [class=".*"] border pixel 2
+gaps inner 8
+gaps outer 8
+gaps top 40
+
+#smart_borders on
+#smart_borders no_gaps
+#border_radius 10
+
+# startup programs
+exec_always --no-startup-id picom --experimental-backends -cb --config ~/.config/picom/picom.conf
+exec --no-startup-id feh --bg-scale $HOME/.config/wallpapers/the-great-wave2-nord.png
+exec --no-startup-id polybar main_bar --config=$HOME/.config/polybar/config.ini
+exec --no-startup-id dunst
+exec --no-startup-id xmodmap $HOME/.Xmodmap
+exec --no-startup-id nm-applet
+# exec --no-startup-id easyeffects --gapplication-service
+
+# floating windows
+for_window [class="mpv"] floating enable
+for_window [title="OneLoneCoder.com*"] floating enable
+for_window [class="feh"] floating enable;
+for_window [class="test2d"] floating enable;
+for_window [class="RssReader"] floating enable
+for_window [class="JPG-Compression"] floating enable
+for_window [class="Project"] floating enable
+for_window [class="SandSim"] floating enable
+for_window [title="Blender Preferences"] floating enable
+for_window [title="Blender Render"] floating enable
+for_window [class="atari800"] floating enable
+for_window [title="Android Emulator*"] floating enable
+for_window [class="net-tfobz-tunnel-client-ClientForm"] floating enable
+# for_window [class="*qemu*"] floating enable
+# for_window [title="*Paravim"] floating enable
+# for_window [title="Minecraft*"] floating enable
+for_window [title="Welcome to Xbox"] floating enable
+for_window [class="thunar"] floating enable
+for_window [class="easyeffects"] flaoting enable
+for_window [class="qpwgraph"] flaoting enable
+for_window [class="thunar"] flaoting enable
+for_window [class="easyeffects"] flaoting enable
+for_window [title="EasyEffects"] floating enable
+for_window [class="lutris"] floating enable
+for_window [class="epicgameslauncher.exe"] floating enable

@@ -1,0 +1,26 @@
+keycode 66 = Mode_switch
+keysym h = h H Left 
+keysym l = l L Right 
+keysym k = k K Up
+keysym j = j J Down
+
+keysym 1 = 1 exclam F1 F1
+keysym 2 = 2 at F2 F2
+keysym 3 = 3 numbersign F3 F3
+keysym 4 = 4 dollar F4 F4
+keysym 5 = 5 percent F5 F5
+keysym 6 = 6 asciicircum F6 F6
+keysym 7 = 7 ampersand F7 F7
+keysym 8 = 8 asterisk F8 F8
+keysym 9 = 9 parenleft F9 F9
+keycode 19 = 0 parenright F10 F10
+keycode 20 = minus underscore F11 F11
+keycode 21 = equal plus F12 F12
+
+keycode 59 = comma less Delete Delete
+keycode 9 = Escape Escape asciitilde grave
+
+keysym a = a A adiaeresis Adiaeresis
+keysym o = o O odiaeresis Odiaeresis
+keysym u = u U udiaeresis Udiaeresis
+keysym s = s S ssharp
